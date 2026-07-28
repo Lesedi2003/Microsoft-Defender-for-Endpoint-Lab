@@ -1,38 +1,34 @@
-# 📖 Lab Overview
+# 📖 Overview
 
 ## Introduction
 
-Imagine you're a SOC analyst starting your shift.
+Imagine you're a SOC analyst investigating a newly detected security incident.
 
-Instead of building the security platform, your job is to investigate the alerts that have already been detected.
+Your job isn't to build the security platform—it's to understand what happened, determine whether the activity is malicious, assess its impact, and decide on the appropriate response.
 
-Every day, organizations generate thousands of security events across endpoints, identities, email, cloud applications, and servers. Finding the alerts that actually matter—and responding to them quickly—is one of the biggest challenges for a Security Operations Center (SOC).
+Modern organizations generate millions of endpoint events every day, making it impossible to investigate every event manually. Instead, security analysts rely on Endpoint Detection and Response (EDR) platforms such as **Microsoft Defender for Endpoint** to collect telemetry, detect suspicious behaviour, correlate related events into incidents, and provide the tools needed to investigate and respond efficiently.
 
-This is where **Microsoft Defender XDR** plays an important role.
+In this lab, I deployed a Windows endpoint in Microsoft Azure and onboarded it into Microsoft Defender for Endpoint. Once connected, the endpoint continuously generated security telemetry, allowing me to investigate alerts, analyze endpoint activity, perform threat hunting using Kusto Query Language (KQL), and execute basic response actions from within the Defender portal.
 
-Microsoft Defender XDR brings together security signals from multiple Microsoft security products into a single platform, allowing analysts to investigate incidents from one centralized location instead of switching between different security tools.
+Rather than focusing on detection engineering, this project demonstrates the day-to-day responsibilities of a Security Operations Center (SOC) analyst after an endpoint has been onboarded into Microsoft Defender for Endpoint.
 
-In this lab, I use Microsoft Defender XDR to investigate a security incident from start to finish. The project covers onboarding an endpoint, generating security telemetry, analyzing alerts, investigating the device timeline, performing threat hunting with Kusto Query Language (KQL), and documenting the investigation process.
-
-Rather than focusing on building detection rules, this project focuses on the daily responsibilities of a SOC analyst after an incident has already been detected.
-
-By the end of the lab, the complete investigation lifecycle is demonstrated—from endpoint onboarding and alert investigation to threat hunting, response, and Microsoft Sentinel integration.
+By the end of this lab, the complete investigation workflow is demonstrated—from endpoint onboarding and exposure assessment to incident investigation, threat hunting, and response.
 
 ---
 
 # 🎯 Objectives
 
-The primary objectives of this lab are to:
+The objectives of this lab are to:
 
-- Deploy and onboard a Windows endpoint into Microsoft Defender for Endpoint.
-- Generate security telemetry for investigation.
-- Investigate alerts and incidents within Microsoft Defender XDR.
-- Analyze the Device Timeline and collected evidence.
+- Deploy a Windows endpoint in Microsoft Azure.
+- Onboard the endpoint into Microsoft Defender for Endpoint.
+- Explore Device Inventory and Exposure information.
+- Review Threat & Vulnerability Management recommendations.
+- Generate endpoint security telemetry.
+- Investigate alerts and incidents.
 - Perform threat hunting using Advanced Hunting (KQL).
-- Understand how Defender XDR correlates alerts into incidents.
-- Explore incident response capabilities available within Microsoft Defender.
-- Integrate Microsoft Defender XDR with Microsoft Sentinel.
-- Document the complete investigation workflow.
+- Execute basic endpoint response actions.
+- Document the investigation process from start to finish.
 
 ---
 
@@ -40,76 +36,67 @@ The primary objectives of this lab are to:
 
 | Technology | Purpose |
 |------------|---------|
-| Microsoft Defender XDR | Extended Detection and Response (XDR) platform |
-| Microsoft Defender for Endpoint | Endpoint Detection and Response (EDR) |
-| Microsoft Sentinel | SIEM Integration |
+| Microsoft Defender for Endpoint | Endpoint Detection & Response (EDR) |
 | Microsoft Azure | Cloud Platform |
-| Windows 11 | Investigation Endpoint |
-| Azure Virtual Machine | Lab Environment |
+| Windows 11 | Endpoint Device |
+| Azure Virtual Machine | Investigation Environment |
 | Kusto Query Language (KQL) | Advanced Hunting |
-| Microsoft Defender Portal | Incident Investigation |
+| Microsoft Defender Portal | Security Investigation |
 | MITRE ATT&CK Framework | Threat Classification |
 
 ---
 
-# 🧠 Skills Demonstrated
+# 🎯 Skills Demonstrated
 
-Throughout this project I demonstrate practical experience with:
+This lab demonstrates practical experience with:
 
-- Microsoft Defender XDR
 - Microsoft Defender for Endpoint
-- Endpoint Investigation
-- Incident Analysis
-- Alert Triage
+- Endpoint Detection & Response (EDR)
+- Device Onboarding
+- Device Inventory
+- Threat & Vulnerability Management
+- Security Incident Investigation
+- Alert Analysis
 - Device Timeline Analysis
+- Process Tree Investigation
 - Threat Hunting
 - Advanced Hunting (KQL)
+- Endpoint Response
 - MITRE ATT&CK Mapping
-- Endpoint Telemetry Analysis
-- Microsoft Sentinel Integration
-- Security Incident Response
 - SOC Investigation Workflow
 
 ---
 
 # 🔄 Investigation Workflow
 
-This lab follows the same workflow used by many Security Operations Centers:
+This project follows a typical endpoint investigation workflow used by Security Operations Centers.
 
 ```text
-Endpoint
-
-↓
-
+Windows Endpoint
+        │
+        ▼
 Microsoft Defender for Endpoint
-
-↓
-
-Microsoft Defender XDR
-
-↓
-
-Alert Generated
-
-↓
-
-Incident Created
-
-↓
-
-Investigation
-
-↓
-
-Threat Hunting
-
-↓
-
+        │
+        ▼
+Device Inventory & Exposure
+        │
+        ▼
+Threat & Vulnerability Assessment
+        │
+        ▼
+Endpoint Security Events
+        │
+        ▼
+Alert & Incident Investigation
+        │
+        ▼
+Advanced Hunting (KQL)
+        │
+        ▼
 Response Actions
-
-↓
-
-Microsoft Sentinel
+        │
+        ▼
+Investigation Report
 ```
 
-The following sections walk through each stage of this investigation step by step.
+The following sections document each phase of the investigation in detail.
